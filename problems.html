@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AP Stat — All Questions &amp; Answers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    MathJax = {
+      tex: { inlineMath: [["$","$"],["\\(","\\)"]], displayMath: [["$$","$$"],["\\[","\\]"]], processEscapes: true },
+      options: { enableMenu: false },
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root {
+      --blue:    #1e3a8a;
+      --blue-lt: #eff6ff;
+      --blue-bd: #bfdbfe;
+      --gold:    #d97706;
+      --gold-lt: #fef3c7;
+      --purple:  #7c3aed;
+      --ink:     #111827;
+      --muted:   #6b7280;
+      --border:  #e5e7eb;
+      --bg:      #f9fafb;
+      --white:   #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg); color: var(--ink);
+      line-height: 1.65; font-size: 16px;
+    }
+
+    /* ── Header ── */
+    .pg-header {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--white); border-bottom: 1.5px solid var(--border);
+      display: flex; align-items: center; gap: 1.25rem;
+      padding: .875rem 2rem; flex-wrap: wrap;
+    }
+    .back {
+      font-size: .95rem; font-weight: 700; color: var(--blue);
+      text-decoration: none;
+    }
+    .back:hover { text-decoration: underline; }
+    .pg-title { font-size: .95rem; font-weight: 700; color: var(--ink); }
+    .pg-nav { display: flex; gap: .375rem; margin-left: auto; }
+    .pg-nav a {
+      font-size: .85rem; font-weight: 600; color: var(--muted);
+      text-decoration: none; padding: .3rem .75rem;
+      border: 1px solid var(--border); border-radius: .375rem;
+      transition: all .15s;
+    }
+    .pg-nav a:hover { background: var(--blue-lt); color: var(--blue); border-color: var(--blue-bd); }
+
+    /* ── Layout ── */
+    .body { max-width: 900px; margin: 0 auto; padding: 2.75rem 1.5rem 6rem; }
+
+    /* ── Round section ── */
+    .round-sec { margin-bottom: 4rem; }
+    .round-hd {
+      display: flex; align-items: center; gap: .875rem; margin-bottom: 2rem;
+    }
+    .round-tag {
+      font-size: .72rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--white); background: var(--blue);
+      padding: .3rem .75rem; border-radius: .375rem; white-space: nowrap;
+    }
+    .round-info { font-size: .9rem; color: var(--muted); }
+    .hd-rule { flex: 1; height: 1px; background: var(--border); }
+
+    /* ── Category group ── */
+    .cat-grp { margin-bottom: 2.5rem; }
+    .cat-tag {
+      font-size: .78rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .07em; color: var(--blue); background: var(--blue-lt);
+      border: 1px solid var(--blue-bd);
+      padding: .3rem .875rem; border-radius: .375rem;
+      display: inline-block; margin-bottom: 1.125rem;
+    }
+
+    /* ── Question card ── */
+    .q-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: .875rem; margin-bottom: 1.125rem; overflow: hidden;
+    }
+
+    /* Question row */
+    .q-row {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
+    }
+    .q-pts {
+      flex-shrink: 0; font-size: .8rem; font-weight: 800; color: var(--gold);
+      background: var(--gold-lt); padding: .25rem .55rem;
+      border-radius: .3rem; margin-top: .2rem; line-height: 1;
+    }
+    .q-text { font-size: 1.05rem; color: var(--ink); line-height: 1.65; }
+
+    /* Answer row */
+    .a-row {
+      display: flex; align-items: flex-start; gap: .875rem;
+      padding: 1rem 1.5rem; background: var(--blue-lt); border-bottom: 1px solid var(--blue-bd);
+    }
+    .a-lbl {
+      flex-shrink: 0; font-size: .7rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .1em;
+      color: var(--blue); margin-top: .25rem;
+    }
+    .a-text { font-size: 1.05rem; font-weight: 700; color: var(--blue); line-height: 1.55; }
+
+    /* Solution block */
+    .sol-block {
+      padding: 1rem 1.5rem 1.25rem; background: var(--bg);
+      display: flex; flex-direction: column; gap: .45rem;
+    }
+    .sol-lbl {
+      font-size: .72rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--muted); margin-bottom: .25rem;
+    }
+    .step-text    { font-size: 1rem; color: var(--ink); line-height: 1.6; }
+    .step-formula {
+      background: var(--white); border-left: 3px solid var(--blue);
+      border-radius: 0 .375rem .375rem 0;
+      padding: .5rem 1rem; overflow-x: auto; font-size: .95rem; margin: .1rem 0;
+    }
+    .step-bullets { padding-left: 1.4rem; display: flex; flex-direction: column; gap: .25rem; margin: .1rem 0; }
+    .step-bullets li { font-size: 1rem; list-style: disc; line-height: 1.55; }
+
+    /* ── Final Jeopardy ── */
+    .fj-card {
+      background: var(--white); border: 1.5px solid var(--blue-bd);
+      border-radius: 1rem; overflow: hidden;
+    }
+    .fj-hd {
+      background: var(--blue); padding: 1.125rem 1.5rem;
+      display: flex; align-items: center; gap: .875rem;
+    }
+    .fj-tag {
+      font-size: .7rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .1em; background: var(--gold); color: var(--white);
+      padding: .25rem .625rem; border-radius: .3rem;
+    }
+    .fj-title { font-size: 1.05rem; font-weight: 800; color: var(--white); }
+    .fj-q {
+      padding: 1.5rem; font-size: 1rem; line-height: 1.75;
+      border-bottom: 1px solid var(--border);
+    }
+    .fj-sol { padding: 1.375rem 1.5rem; background: var(--bg); }
+    .fj-sol-lbl {
+      font-size: .72rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--purple); margin-bottom: 1.125rem;
+    }
+    .fj-part { margin-bottom: 1.625rem; }
+    .fj-part:last-child { margin-bottom: 0; }
+    .fj-part-lbl {
+      font-size: .78rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--blue); margin-bottom: .6rem;
+      padding-bottom: .4rem; border-bottom: 1px solid var(--border);
+    }
+    .fj-part-steps { display: flex; flex-direction: column; gap: .4rem; }
+
+    /* Classes referenced inside game-data.js HTML strings */
+    .fj-intro { margin-bottom: 1rem; font-size: 1rem; }
+    .fj-table { border-collapse: collapse; margin: 1rem auto 1.25rem; }
+    .fj-table th, .fj-table td { border: 1px solid var(--border); padding: .5rem 1.1rem; text-align: center; }
+    .fj-table th { background: var(--blue-lt); color: var(--blue); font-weight: 700; font-size: .85rem; text-transform: uppercase; }
+    .fj-table td { background: var(--white); font-size: .95rem; }
+    .fj-part-q { background: var(--blue-lt); border-radius: .375rem; padding: .75rem 1rem; margin-bottom: .625rem; font-size: 1rem; line-height: 1.65; }
+    .fj-part-q:last-child { margin-bottom: 0; }
+    .fj-part-label-inline { font-weight: 800; color: var(--blue); margin-right: .3rem; }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    @media (max-width: 640px) {
+      .pg-header { padding: .75rem 1rem; }
+      .body { padding: 1.75rem 1rem 4rem; }
+      .q-row, .a-row, .sol-block, .fj-q, .fj-sol { padding-left: 1rem; padding-right: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="pg-header">
+    <a href="index.html" class="back">← Back to game</a>
+    <span class="pg-title">AP Statistics — All Questions &amp; Answers</span>
+    <nav class="pg-nav">
+      <a href="#r1">Round 1</a>
+      <a href="#r2">Double Jeopardy</a>
+      <a href="#fj">Final</a>
+    </nav>
+  </header>
+
+  <main class="body" id="main"></main>
+
+  <script src="game-data.js"></script>
+  <script>
+    function stepsHTML(steps) {
+      return (steps || []).map(s => {
+        if (s.type === "formula")
+          return `<div class="step-formula">\\[${s.content}\\]</div>`;
+        if (s.type === "bullets")
+          return `<ul class="step-bullets">${s.content.map(b => `<li>${b}</li>`).join("")}</ul>`;
+        return `<p class="step-text">${s.content}</p>`;
+      }).join("");
+    }
+
+    function buildRound(key, label, anchor) {
+      const rd = gameData[key];
+      const sec = document.createElement("section");
+      sec.className = "round-sec";
+      sec.id = anchor;
+      sec.innerHTML = `
+        <div class="round-hd">
+          <span class="round-tag">${label}</span>
+          <span class="round-info">${rd.categories.length} categories · ${rd.pointValues[0]}–${rd.pointValues[rd.pointValues.length-1]} pts each</span>
+          <div class="hd-rule"></div>
+        </div>`;
+
+      rd.categories.forEach(cat => {
+        const grp = document.createElement("div");
+        grp.className = "cat-grp";
+        grp.innerHTML = `<div class="cat-tag">${cat}</div>`;
+
+        rd.questions[cat].forEach(q => {
+          const card = document.createElement("div");
+          card.className = "q-card";
+          card.innerHTML = `
+            <div class="q-row">
+              <span class="q-pts">$${q.value}</span>
+              <div class="q-text">${q.question}</div>
+            </div>
+            <div class="a-row">
+              <span class="a-lbl">Answer</span>
+              <span class="a-text">${q.answer}</span>
+            </div>
+            <div class="sol-block">
+              <div class="sol-lbl">Worked Solution</div>
+              ${stepsHTML(q.solution)}
+            </div>`;
+          grp.appendChild(card);
+        });
+
+        sec.appendChild(grp);
+      });
+
+      return sec;
+    }
+
+    function buildFJ() {
+      const fj = gameData.finalJeopardy;
+      const sec = document.createElement("section");
+      sec.className = "round-sec";
+      sec.id = "fj";
+      sec.innerHTML = `
+        <div class="round-hd">
+          <span class="round-tag" style="background:#7c3aed">Final Jeopardy</span>
+          <div class="hd-rule"></div>
+        </div>`;
+
+      const questionHTML = fj.question
+        .replace(/class="fj-part"/g, 'class="fj-part-q"')
+        .replace(/class="fj-part-label"/g, 'class="fj-part-label-inline"');
+
+      const card = document.createElement("div");
+      card.className = "fj-card";
+      card.innerHTML = `
+        <div class="fj-hd">
+          <span class="fj-tag">Final</span>
+          <span class="fj-title">${fj.category}</span>
+        </div>
+        <div class="fj-q">${questionHTML}</div>
+        <div class="fj-sol">
+          <div class="fj-sol-lbl">Complete Solution</div>
+          ${fj.solution.map(p => `
+            <div class="fj-part">
+              <div class="fj-part-lbl">${p.label}</div>
+              <div class="fj-part-steps">${stepsHTML(p.steps)}</div>
+            </div>`).join("")}
+        </div>`;
+
+      sec.appendChild(card);
+      return sec;
+    }
+
+    const main = document.getElementById("main");
+    main.appendChild(buildRound("round1", "Round 1", "r1"));
+    main.appendChild(buildRound("round2", "Double Jeopardy", "r2"));
+    main.appendChild(buildFJ());
+
+    if (window.MathJax) MathJax.typesetPromise([main]);
+  </script>
+</body>
+</html>

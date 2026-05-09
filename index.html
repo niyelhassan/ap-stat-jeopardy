@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AP Statistics Jeopardy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    MathJax = {
+      tex: { inlineMath: [["$","$"],["\\(","\\)"]], displayMath: [["$$","$$"],["\\[","\\]"]], processEscapes: true },
+      options: { enableMenu: false },
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HOME -->
+  <div id="home">
+    <div class="home-wrap">
+
+      <!-- Left: branding -->
+      <div class="home-left">
+        <div class="home-eyebrow">AP Statistics</div>
+        <h1 class="home-title">Jeopardy!</h1>
+        <p class="home-desc">
+          Two rounds of questions on all AP Stat topics, Double Jeopardy, and a multi-part Final Jeopardy free-response question.
+        </p>
+        <a href="problems.html" class="home-qa-link">View all questions &amp; answers →</a>
+      </div>
+
+      <!-- Right: setup -->
+      <div class="home-right">
+        <div>
+          <div class="home-right-title">Set up teams</div>
+          <div class="home-right-hint">Optional — up to 6 teams</div>
+        </div>
+        <div>
+          <label class="field-label">Team name</label>
+          <div class="team-input-row">
+            <input id="teamInput" class="text-input" type="text" placeholder="e.g. Team A" maxlength="24" />
+            <button class="btn btn-outline" onclick="addTeam()">Add</button>
+          </div>
+        </div>
+        <div id="teamList"></div>
+        <button class="btn-start" onclick="startGame()">Start Game</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOARD -->
+  <div id="board" class="hidden">
+    <div class="board-header">
+      <button class="header-home" onclick="goHome()">AP Stat Jeopardy</button>
+      <div class="round-tabs">
+        <button id="tab1" class="tab active" onclick="switchRound(1)">Round 1</button>
+        <button id="tab2" class="tab" onclick="switchRound(2)">Double Jeopardy</button>
+        <button class="tab tab-fj" onclick="openFJ()">Final Jeopardy</button>
+      </div>
+      <div id="scoreBar" class="score-bar"></div>
+    </div>
+    <div id="grid" class="board-grid"></div>
+  </div>
+
+  <!-- QUESTION MODAL -->
+  <div id="qModal" class="modal-bg hidden">
+    <div class="modal modal-question">
+      <div class="modal-top">
+        <span id="qCat" class="modal-cat"></span>
+        <span id="qVal" class="modal-val"></span>
+      </div>
+      <div id="qTurn" class="turn-chip hidden"></div>
+      <div id="qBody" class="modal-body q-body"></div>
+      <div class="modal-foot">
+        <button class="btn btn-gold" onclick="showAnswer()">Show Answer</button>
+        <button class="btn btn-ghost" onclick="closeQ()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANSWER MODAL -->
+  <div id="aModal" class="modal-bg hidden">
+    <div class="modal modal-answer">
+      <div class="modal-label-bar">Answer</div>
+      <div id="aBody" class="modal-body a-body"></div>
+      <div class="modal-foot">
+        <button class="btn btn-green" onclick="markCorrect()">✓ Correct</button>
+        <button class="btn btn-red" onclick="markWrong()">✗ Incorrect</button>
+        <button class="btn btn-purple" onclick="showSol()">Solution</button>
+        <button class="btn btn-ghost" onclick="skipQ()">Skip</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOLUTION MODAL -->
+  <div id="sModal" class="modal-bg hidden" style="z-index:60">
+    <div class="modal modal-sol">
+      <div class="modal-label-bar">Worked Solution</div>
+      <div id="sBody" class="modal-body sol-body"></div>
+      <div class="modal-foot">
+        <button class="btn btn-primary" onclick="closeSol()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL JEOPARDY MODAL -->
+  <div id="fjModal" class="modal-bg hidden">
+    <div class="modal modal-fj">
+      <div class="fj-header">
+        <div class="fj-eyebrow">Final Jeopardy</div>
+        <div id="fjCat" class="fj-cat"></div>
+      </div>
+      <div id="fjBody" class="modal-body fj-body"></div>
+      <div class="modal-foot">
+        <button class="btn btn-purple" onclick="showFJSol()">View Solution</button>
+        <button class="btn btn-ghost" onclick="closeFJ()">Back to Game</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL JEOPARDY SOLUTION MODAL -->
+  <div id="fjsModal" class="modal-bg hidden" style="z-index:70">
+    <div class="modal modal-sol modal-fjs">
+      <div class="modal-label-bar">Final Jeopardy — Solution</div>
+      <div id="fjsBody" class="modal-body sol-body"></div>
+      <div class="modal-foot">
+        <button class="btn btn-primary" onclick="closeFJSol()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
