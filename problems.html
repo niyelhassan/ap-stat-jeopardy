@@ -288,10 +288,17 @@
       return sec;
     }
 
+    const printRound = new URLSearchParams(location.search).get("r");
+
+    if (printRound) {
+      document.querySelector(".pg-header").style.display = "none";
+      document.querySelector(".body").style.padding = "1.5rem";
+    }
+
     const main = document.getElementById("main");
-    main.appendChild(buildRound("round1", "Round 1", "r1"));
-    main.appendChild(buildRound("round2", "Double Jeopardy", "r2"));
-    main.appendChild(buildFJ());
+    if (!printRound || printRound === "1") main.appendChild(buildRound("round1", "Round 1", "r1"));
+    if (!printRound || printRound === "2") main.appendChild(buildRound("round2", "Double Jeopardy", "r2"));
+    if (!printRound) main.appendChild(buildFJ());
 
     if (window.MathJax) MathJax.typesetPromise([main]);
   </script>
