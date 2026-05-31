@@ -1,7 +1,7 @@
 const gameData = {
   round1: {
     label: "Round 1",
-    pointValues: [200, 400, 600, 800, 1000],
+    pointValues: [100, 200, 300, 400, 500],
     categories: [
       "Shape, Center & Spread",
       "2-Var Quantitative Data",
@@ -12,7 +12,7 @@ const gameData = {
     questions: {
       "Shape, Center & Spread": [
         {
-          value: 200,
+          value: 100,
           question: "When a distribution has a long tail stretching to the left and the mean is less than the median, it has this shape.",
           answer: "What is left-skewed (negatively skewed)?",
           solution: [
@@ -20,7 +20,7 @@ const gameData = {
           ],
         },
         {
-          value: 400,
+          value: 200,
           question: "For the data set 62, 68, 74, 80, 88, 95, 102, the interquartile range has this value.",
           answer: "What is 27?",
           solution: [
@@ -29,7 +29,7 @@ const gameData = {
           ],
         },
         {
-          value: 600,
+          value: 300,
           question: "Test scores are normally distributed with mean 72 and standard deviation 8. A student scoring 88 has this z-score.",
           answer: "What is z = 2?",
           solution: [
@@ -38,7 +38,7 @@ const gameData = {
           ],
         },
         {
-          value: 800,
+          value: 400,
           question: "A boxplot shows Q1 = 20 and Q3 = 50. Using the 1.5 x IQR rule, a value of 100 would be identified as this.",
           answer: "What is an outlier?",
           solution: [
@@ -47,7 +47,7 @@ const gameData = {
           ],
         },
         {
-          value: 1000,
+          value: 500,
           question: "A data set of daily absences is: 0, 0, 1, 2, 2, 3, 24. The median is preferred over the mean as a measure of center for this reason.",
           answer: "What is the median is resistant to outliers (24 pulls the mean up but not the median)?",
           solution: [
@@ -59,7 +59,7 @@ const gameData = {
 
       "2-Var Quantitative Data": [
         {
-          value: 200,
+          value: 100,
           question: "A correlation coefficient of r = -0.91 indicates this about the relationship between two quantitative variables.",
           answer: "What is a strong, negative linear relationship?",
           solution: [
@@ -67,7 +67,7 @@ const gameData = {
           ],
         },
         {
-          value: 400,
+          value: 200,
           question: "The LSRL for predicting exam score (y-hat) from hours studied (x) is y-hat = 55 + 4.2x. For each additional hour studied, the predicted exam score changes by this amount.",
           answer: "What is an increase of 4.2 points?",
           solution: [
@@ -75,7 +75,7 @@ const gameData = {
           ],
         },
         {
-          value: 600,
+          value: 300,
           question: "A regression model predicting college GPA from high school GPA has r² = 0.46. This percentage of the variation in college GPA is explained by its linear relationship with high school GPA.",
           answer: "What is 46%?",
           solution: [
@@ -83,7 +83,7 @@ const gameData = {
           ],
         },
         {
-          value: 800,
+          value: 400,
           question: "A student's actual exam score is 76, and the regression model predicted a score of 83. This student's residual equals this value, and the model did this.",
           answer: "What is -7; the model overpredicted?",
           solution: [
@@ -92,7 +92,7 @@ const gameData = {
           ],
         },
         {
-          value: 1000,
+          value: 500,
           question: "A residual plot for a linear regression model shows a fan-shaped pattern, with the residuals spreading out as x increases. This indicates this problem with the model.",
           answer: "What is non-constant variance (the linear model may not be appropriate)?",
           solution: [
@@ -103,7 +103,7 @@ const gameData = {
 
       "Bias & Sampling": [
         {
-          value: 200,
+          value: 100,
           question: "A researcher assigns every 10th person on an alphabetized list to participate in a survey. This sampling method is called this.",
           answer: "What is systematic random sampling?",
           solution: [
@@ -111,7 +111,7 @@ const gameData = {
           ],
         },
         {
-          value: 400,
+          value: 200,
           question: "A school reporter polls only students leaving the cafeteria about satisfaction with cafeteria food, then reports the findings as representative of the whole school. The main flaw is this type of bias.",
           answer: "What is undercoverage (or sampling bias)?",
           solution: [
@@ -119,7 +119,7 @@ const gameData = {
           ],
         },
         {
-          value: 600,
+          value: 300,
           question: "A polling company mails surveys to 5,000 households but only 800 respond. The results may be biased because responders may differ systematically from non-responders. This is called this type of bias.",
           answer: "What is non-response bias?",
           solution: [
@@ -127,7 +127,7 @@ const gameData = {
           ],
         },
         {
-          value: 800,
+          value: 400,
           question: "A researcher divides a city into zip-code areas, randomly selects 5 zip codes, and surveys every household in those zip codes. This sampling method is called this.",
           answer: "What is cluster sampling?",
           solution: [
@@ -135,7 +135,7 @@ const gameData = {
           ],
         },
         {
-          value: 1000,
+          value: 500,
           question: "Researchers use the sample mean from 800 randomly selected carry-on bags to estimate mean weight. If they increase the sample size to 1,300 (all else equal), this describes what happens to the bias and variance of the estimator.",
           answer: "What is the bias stays the same and the variance decreases?",
           solution: [
@@ -147,7 +147,7 @@ const gameData = {
 
       "Experimental Design": [
         {
-          value: 200,
+          value: 100,
           question: "In a drug study, the group that receives an inactive substance designed to look like the real medication, to account for the placebo effect, is called this.",
           answer: "What is the control group (or placebo group)?",
           solution: [
@@ -155,7 +155,7 @@ const gameData = {
           ],
         },
         {
-          value: 400,
+          value: 200,
           question: "The feature of a controlled experiment that allows researchers to draw cause-and-effect conclusions by balancing confounding variables between groups is this.",
           answer: "What is random assignment?",
           solution: [
@@ -163,7 +163,7 @@ const gameData = {
           ],
         },
         {
-          value: 600,
+          value: 300,
           question: "In a drug trial, neither the patients nor the evaluating physicians know who is receiving the drug or the placebo. This experimental design is called this.",
           answer: "What is double-blind?",
           solution: [
@@ -171,7 +171,7 @@ const gameData = {
           ],
         },
         {
-          value: 800,
+          value: 400,
           question: "A researcher plants 60 seeds: 30 randomly receive a new fertilizer and 30 receive none. After 8 weeks, mean growth is compared. The key feature that allows a causal conclusion about the fertilizer is this.",
           answer: "What is random assignment?",
           solution: [
@@ -179,7 +179,7 @@ const gameData = {
           ],
         },
         {
-          value: 1000,
+          value: 500,
           question: "A researcher tests whether a sleep aid helps: each subject is tested once after the medication and once after a placebo, with the order randomized. Each subject acts as their own control in this experimental design.",
           answer: "What is a matched pairs design?",
           solution: [
@@ -190,7 +190,7 @@ const gameData = {
 
       "Probability": [
         {
-          value: 200,
+          value: 100,
           question: "The probability of rolling a number greater than 4 on a single fair six-sided die is this.",
           answer: "What is 1/3 (approximately 0.333)?",
           solution: [
@@ -198,7 +198,7 @@ const gameData = {
           ],
         },
         {
-          value: 400,
+          value: 200,
           question: "A store's records show that 1/4 of customers who visit the service department ask for help finding an item. Assuming independence, the probability that at least 1 of the next 4 customers asks for help is this.",
           answer: "What is 1 - (3/4)^4 ≈ 0.684?",
           solution: [
@@ -206,7 +206,7 @@ const gameData = {
           ],
         },
         {
-          value: 600,
+          value: 300,
           question: "In a class, 55% of students play a sport, 40% are in a school club, and 20% do both. The probability that a randomly selected student plays a sport or is in a club is this.",
           answer: "What is 0.75?",
           solution: [
@@ -214,7 +214,7 @@ const gameData = {
           ],
         },
         {
-          value: 800,
+          value: 400,
           question: "Events A and B have P(A) = 0.4, P(B) = 0.5, and P(A and B) = 0.20. This is the relationship between A and B.",
           answer: "What is independent (A and B are independent events)?",
           solution: [
@@ -222,7 +222,7 @@ const gameData = {
           ],
         },
         {
-          value: 1000,
+          value: 500,
           question: "According to a survey, 6% of workers arrive between 6:45 and 7:00 AM. If 300 workers are randomly selected and W is the number arriving in that window (independent arrivals), the standard deviation of W is closest to this value.",
           answer: "What is 4.11?",
           solution: [
@@ -236,7 +236,7 @@ const gameData = {
 
   round2: {
     label: "Double Jeopardy",
-    pointValues: [400, 800, 1200, 1600, 2000],
+    pointValues: [200, 400, 600, 800, 1000],
     categories: [
       "Normal Dist & Sampling",
       "2-Var Quantitative Data",
@@ -247,7 +247,7 @@ const gameData = {
     questions: {
       "Normal Dist & Sampling": [
         {
-          value: 400,
+          value: 200,
           question: "Scores on a standardized test are normally distributed with mean 500 and standard deviation 100. By the Empirical Rule, approximately this percentage of test-takers scored between 400 and 600.",
           answer: "What is 68%?",
           solution: [
@@ -255,7 +255,7 @@ const gameData = {
           ],
         },
         {
-          value: 800,
+          value: 400,
           question: "A population has mean mu = 50 and standard deviation sigma = 20. For random samples of size n = 25, this is the standard error of the sampling distribution of x-bar.",
           answer: "What is 4?",
           solution: [
@@ -263,7 +263,7 @@ const gameData = {
           ],
         },
         {
-          value: 1200,
+          value: 600,
           question: "A fair six-sided die is rolled 15 times. The mean of the first 10 rolls is x-bar-1 and the mean of the remaining 5 rolls is x-bar-2. The mean of the sampling distribution of (x-bar-1 - x-bar-2) equals this value.",
           answer: "What is 0?",
           solution: [
@@ -271,7 +271,7 @@ const gameData = {
           ],
         },
         {
-          value: 1600,
+          value: 800,
           question: "For the sampling distribution of the sample proportion p-hat to be approximately Normal, both of these two conditions involving n and p must be satisfied.",
           answer: "What is np >= 10 and n(1-p) >= 10 (the Large Counts condition)?",
           solution: [
@@ -279,7 +279,7 @@ const gameData = {
           ],
         },
         {
-          value: 2000,
+          value: 1000,
           question: "A strongly right-skewed population has mean 100 and SD 30. This theorem guarantees that for large samples (n >= 30), the sampling distribution of x-bar is approximately Normal, regardless of the population shape.",
           answer: "What is the Central Limit Theorem (CLT)?",
           solution: [
@@ -290,7 +290,7 @@ const gameData = {
 
       "2-Var Quantitative Data": [
         {
-          value: 400,
+          value: 200,
           question: "A data set has: mean HS GPA = 3.45, mean College GPA = 3.10, Sx = 0.40, Sy = 0.55, r = 0.68. The slope of the LSRL for predicting college GPA from HS GPA equals this value.",
           answer: "What is 0.935?",
           solution: [
@@ -299,7 +299,7 @@ const gameData = {
           ],
         },
         {
-          value: 800,
+          value: 400,
           question: "Using a regression model to make a prediction for an x-value that is far outside the range of observed data is called this.",
           answer: "What is extrapolation?",
           solution: [
@@ -307,7 +307,7 @@ const gameData = {
           ],
         },
         {
-          value: 1200,
+          value: 600,
           question: "A single data point that has an extreme x-value and substantially changes the slope or intercept of the regression line when included is called this type of point.",
           answer: "What is an influential point?",
           solution: [
@@ -315,7 +315,7 @@ const gameData = {
           ],
         },
         {
-          value: 1600,
+          value: 800,
           question: "When a scatterplot shows an exponential curved relationship, a common transformation applied to the y-variable to linearize the data before regression is this.",
           answer: "What is a log transformation?",
           solution: [
@@ -323,7 +323,7 @@ const gameData = {
           ],
         },
         {
-          value: 2000,
+          value: 1000,
           question: "A computer output shows t = 3.8 for the slope of the LSRL with p-value = 0.003. At alpha = 0.05, this is the correct conclusion about the population slope beta.",
           answer: "What is reject H0: there is convincing evidence of a linear relationship between x and y?",
           solution: [
@@ -334,7 +334,7 @@ const gameData = {
 
       "Inference: Proportions": [
         {
-          value: 400,
+          value: 200,
           question: "In the U.S., 36% of people have blood type A positive. For a one-sample z-test using 150 Norwegians, the standard deviation used in the test statistic is this.",
           answer: "What is sqrt(0.36 x 0.64 / 150)?",
           solution: [
@@ -342,7 +342,7 @@ const gameData = {
           ],
         },
         {
-          value: 800,
+          value: 400,
           question: "A 95% confidence interval for the proportion of voters supporting a candidate is (0.48, 0.56). This is the correct interpretation of this interval.",
           answer: "What is: we are 95% confident the true proportion of all voters who support the candidate is between 0.48 and 0.56?",
           solution: [
@@ -350,7 +350,7 @@ const gameData = {
           ],
         },
         {
-          value: 1200,
+          value: 600,
           question: "In a sample of 150 Norwegians, 66 had blood type A positive. Before performing inference, you verify that 66 >= 10 and 84 >= 10. This is the name of the condition you just checked.",
           answer: "What is the Large Counts condition?",
           solution: [
@@ -358,7 +358,7 @@ const gameData = {
           ],
         },
         {
-          value: 1600,
+          value: 800,
           question: "Students were randomly assigned to standard or adaptive practice. The 99% CI for the difference in passing proportions (standard minus adaptive) is (0.03, 0.24) and the 90% CI is (0.06, 0.21). At alpha = 0.05, this is the conclusion of the two-proportion z-test.",
           answer: "What is reject H0: convincing evidence that the passing proportions differ?",
           solution: [
@@ -366,7 +366,7 @@ const gameData = {
           ],
         },
         {
-          value: 2000,
+          value: 1000,
           question: "Researchers test H0: pD = pP vs. Ha: pD > pP at alpha = 0.01 and get p-value = 0.12. If the drug actually works, the researcher's conclusion of 'no effect' constitutes this type of error.",
           answer: "What is a Type II error (failing to reject a false null hypothesis)?",
           solution: [
@@ -378,7 +378,7 @@ const gameData = {
 
       "Inference: Means": [
         {
-          value: 400,
+          value: 200,
           question: "A 95% confidence interval for the mean weight of African bush elephants is (12.2, 14.6) thousand pounds. This is the correct interpretation of this interval.",
           answer: "What is: we are 95% confident the true mean weight of all African bush elephants is between 12.2 and 14.6 thousand pounds?",
           solution: [
@@ -386,7 +386,7 @@ const gameData = {
           ],
         },
         {
-          value: 800,
+          value: 400,
           question: "A one-sample t-test for means is conducted using a random sample of n = 30 students. The number of degrees of freedom used to find the p-value is this.",
           answer: "What is 29?",
           solution: [
@@ -394,7 +394,7 @@ const gameData = {
           ],
         },
         {
-          value: 1200,
+          value: 600,
           question: "68 volunteers are randomly split into two groups: one works standing, the other sitting. After 9 months, mean back problems are compared. The most appropriate inference procedure is this.",
           answer: "What is a two-sample t-test for a difference in means?",
           solution: [
@@ -402,7 +402,7 @@ const gameData = {
           ],
         },
         {
-          value: 1600,
+          value: 800,
           question: "A consumer group takes samples of 100 airplanes from each of two airlines and constructs a 95% CI for the difference in mean seat widths. If the sample size decreases to 50 per airline (all else equal), this is the effect on the confidence interval.",
           answer: "What is the interval becomes wider?",
           solution: [
@@ -410,7 +410,7 @@ const gameData = {
           ],
         },
         {
-          value: 2000,
+          value: 1000,
           question: "A sociologist compares salaries of bachelor's (x-bar = $55,000, s = $3,500, n = 32) and master's (x-bar = $58,000, s = $4,000, n = 28) degree holders. With H0: mu-M minus mu-B = 0, this is the correct formula for the two-sample t-test statistic.",
           answer: "What is t = (58,000 - 55,000) / sqrt(4,000² / 28 + 3,500² / 32)?",
           solution: [
@@ -422,7 +422,7 @@ const gameData = {
 
       "Chi-Square Testing": [
         {
-          value: 400,
+          value: 200,
           question: "A chi-square test for homogeneity across four high schools comparing absentee rates gave a test statistic of 19.02 and p-value of 0.025. Assuming H0 states all schools have the same rates, this is the correct interpretation of the p-value.",
           answer: "What is: assuming absentee rates are the same for all four schools, there is a 2.5% probability of observing a test statistic of 19.02 or larger?",
           solution: [
@@ -430,7 +430,7 @@ const gameData = {
           ],
         },
         {
-          value: 800,
+          value: 400,
           question: "In a chi-square test, the formula used to calculate each cell's contribution to the overall test statistic is this.",
           answer: "What is (Observed - Expected)² / Expected?",
           solution: [
@@ -438,7 +438,7 @@ const gameData = {
           ],
         },
         {
-          value: 1200,
+          value: 600,
           question: "A chi-square test of independence is conducted using a 4 by 3 contingency table. The degrees of freedom for this test equal this value.",
           answer: "What is 6?",
           solution: [
@@ -446,7 +446,7 @@ const gameData = {
           ],
         },
         {
-          value: 1600,
+          value: 800,
           question: "Before conducting a chi-square test, you must verify that all expected cell counts meet this minimum threshold.",
           answer: "What is all expected counts must be at least 5?",
           solution: [
@@ -454,7 +454,7 @@ const gameData = {
           ],
         },
         {
-          value: 2000,
+          value: 1000,
           question: "A researcher surveys 200 randomly selected people, recording political affiliation (Dem/Rep/Ind) and stance on a policy (Support/Oppose). The null hypothesis for the appropriate chi-square test states this.",
           answer: "What is: there is no association between political affiliation and policy stance in the population?",
           solution: [
@@ -502,7 +502,7 @@ const gameData = {
         steps: [
           { type: "text", content: "1. Random: both samples were randomly selected. Results can be generalized." },
           { type: "text", content: "2. Normal/Large Sample: both sample sizes are at least 30 (n = 35 and n = 32), so the CLT applies." },
-          { type: "text", content: "3. Independent (10% condition): 35 is less than 10% of all AP Stat students and 32 is less than 10% of all AP Calc students at a large high school. The two groups are independent of each other." },
+          { type: "text", content: "3. Independent (10% condition): 35 is less than 10% of all AP Statistics students and 32 is less than 10% of all AP Calc students at a large high school. The two groups are independent of each other." },
           { type: "text", content: "All conditions are met. Proceed with a two-sample t-test." },
         ],
       },

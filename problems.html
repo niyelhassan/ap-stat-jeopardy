@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AP Stat — All Questions &amp; Answers</title>
+  <title>AP Statistics: All Questions &amp; Answers</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
   <script>
@@ -35,7 +35,7 @@
       line-height: 1.65; font-size: 16px;
     }
 
-    /* ── Header ── */
+    /* Header */
     .pg-header {
       position: sticky; top: 0; z-index: 10;
       background: var(--white); border-bottom: 1.5px solid var(--border);
@@ -57,33 +57,32 @@
     }
     .pg-nav a:hover { background: var(--blue-lt); color: var(--blue); border-color: var(--blue-bd); }
 
-    /* ── Layout ── */
+    /* Layout */
     .body { max-width: 900px; margin: 0 auto; padding: 2.75rem 1.5rem 6rem; }
 
-    /* ── Round section ── */
+    /* Round section */
     .round-sec { margin-bottom: 4rem; }
     .round-hd {
       display: flex; align-items: center; gap: .875rem; margin-bottom: 2rem;
     }
     .round-tag {
-      font-size: .72rem; font-weight: 800; text-transform: uppercase;
-      letter-spacing: .1em; color: var(--white); background: var(--blue);
+      font-size: .72rem; font-weight: 800;
+      color: var(--white); background: var(--blue);
       padding: .3rem .75rem; border-radius: .375rem; white-space: nowrap;
     }
     .round-info { font-size: .9rem; color: var(--muted); }
     .hd-rule { flex: 1; height: 1px; background: var(--border); }
 
-    /* ── Category group ── */
+    /* Category group */
     .cat-grp { margin-bottom: 2.5rem; }
     .cat-tag {
-      font-size: .78rem; font-weight: 800; text-transform: uppercase;
-      letter-spacing: .07em; color: var(--blue); background: var(--blue-lt);
+      font-size: .78rem; font-weight: 800; color: var(--blue); background: var(--blue-lt);
       border: 1px solid var(--blue-bd);
       padding: .3rem .875rem; border-radius: .375rem;
       display: inline-block; margin-bottom: 1.125rem;
     }
 
-    /* ── Question card ── */
+    /* Question card */
     .q-card {
       background: var(--white); border: 1px solid var(--border);
       border-radius: .875rem; margin-bottom: 1.125rem; overflow: hidden;
@@ -108,7 +107,6 @@
     }
     .a-lbl {
       flex-shrink: 0; font-size: .7rem; font-weight: 800;
-      text-transform: uppercase; letter-spacing: .1em;
       color: var(--blue); margin-top: .25rem;
     }
     .a-text { font-size: 1.05rem; font-weight: 700; color: var(--blue); line-height: 1.55; }
@@ -119,8 +117,7 @@
       display: flex; flex-direction: column; gap: .45rem;
     }
     .sol-lbl {
-      font-size: .72rem; font-weight: 800; text-transform: uppercase;
-      letter-spacing: .1em; color: var(--muted); margin-bottom: .25rem;
+      font-size: .72rem; font-weight: 800; color: var(--muted); margin-bottom: .25rem;
     }
     .step-text    { font-size: 1rem; color: var(--ink); line-height: 1.6; }
     .step-formula {
@@ -131,7 +128,7 @@
     .step-bullets { padding-left: 1.4rem; display: flex; flex-direction: column; gap: .25rem; margin: .1rem 0; }
     .step-bullets li { font-size: 1rem; list-style: disc; line-height: 1.55; }
 
-    /* ── Final Jeopardy ── */
+    /* Final Jeopardy */
     .fj-card {
       background: var(--white); border: 1.5px solid var(--blue-bd);
       border-radius: 1rem; overflow: hidden;
@@ -141,8 +138,7 @@
       display: flex; align-items: center; gap: .875rem;
     }
     .fj-tag {
-      font-size: .7rem; font-weight: 800; text-transform: uppercase;
-      letter-spacing: .1em; background: var(--gold); color: var(--white);
+      font-size: .7rem; font-weight: 800; background: var(--gold); color: var(--white);
       padding: .25rem .625rem; border-radius: .3rem;
     }
     .fj-title { font-size: 1.05rem; font-weight: 800; color: var(--white); }
@@ -152,14 +148,12 @@
     }
     .fj-sol { padding: 1.375rem 1.5rem; background: var(--bg); }
     .fj-sol-lbl {
-      font-size: .72rem; font-weight: 800; text-transform: uppercase;
-      letter-spacing: .1em; color: var(--purple); margin-bottom: 1.125rem;
+      font-size: .72rem; font-weight: 800; color: var(--purple); margin-bottom: 1.125rem;
     }
     .fj-part { margin-bottom: 1.625rem; }
     .fj-part:last-child { margin-bottom: 0; }
     .fj-part-lbl {
-      font-size: .78rem; font-weight: 800; text-transform: uppercase;
-      letter-spacing: .08em; color: var(--blue); margin-bottom: .6rem;
+      font-size: .78rem; font-weight: 800; color: var(--blue); margin-bottom: .6rem;
       padding-bottom: .4rem; border-bottom: 1px solid var(--border);
     }
     .fj-part-steps { display: flex; flex-direction: column; gap: .4rem; }
@@ -168,7 +162,7 @@
     .fj-intro { margin-bottom: 1rem; font-size: 1rem; }
     .fj-table { border-collapse: collapse; margin: 1rem auto 1.25rem; }
     .fj-table th, .fj-table td { border: 1px solid var(--border); padding: .5rem 1.1rem; text-align: center; }
-    .fj-table th { background: var(--blue-lt); color: var(--blue); font-weight: 700; font-size: .85rem; text-transform: uppercase; }
+    .fj-table th { background: var(--blue-lt); color: var(--blue); font-weight: 700; font-size: .85rem; }
     .fj-table td { background: var(--white); font-size: .95rem; }
     .fj-part-q { background: var(--blue-lt); border-radius: .375rem; padding: .75rem 1rem; margin-bottom: .625rem; font-size: 1rem; line-height: 1.65; }
     .fj-part-q:last-child { margin-bottom: 0; }
@@ -188,7 +182,7 @@
 
   <header class="pg-header">
     <a href="index.html" class="back">← Back to game</a>
-    <span class="pg-title">AP Statistics — All Questions &amp; Answers</span>
+    <span class="pg-title">AP Statistics: All Questions &amp; Answers</span>
     <nav class="pg-nav">
       <a href="#r1">Round 1</a>
       <a href="#r2">Double Jeopardy</a>
@@ -218,7 +212,7 @@
       sec.innerHTML = `
         <div class="round-hd">
           <span class="round-tag">${label}</span>
-          <span class="round-info">${rd.categories.length} categories · ${rd.pointValues[0]}–${rd.pointValues[rd.pointValues.length-1]} pts each</span>
+          <span class="round-info">${rd.categories.length} categories · ${rd.pointValues[0]} to ${rd.pointValues[rd.pointValues.length-1]} pts each</span>
           <div class="hd-rule"></div>
         </div>`;
 
