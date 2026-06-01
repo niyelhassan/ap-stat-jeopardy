@@ -199,8 +199,8 @@
         if (s.type === "formula")
           return `<div class="step-formula">\\[${s.content}\\]</div>`;
         if (s.type === "bullets")
-          return `<ul class="step-bullets">${s.content.map(b => `<li>${b}</li>`).join("")}</ul>`;
-        return `<p class="step-text">${s.content}</p>`;
+          return `<ul class="step-bullets">${s.content.map(b => `<li>${formatStatSymbols(b)}</li>`).join("")}</ul>`;
+        return `<p class="step-text">${formatStatSymbols(s.content)}</p>`;
       }).join("");
     }
 
@@ -227,11 +227,11 @@
           card.innerHTML = `
             <div class="q-row">
               <span class="q-pts">$${q.value}</span>
-              <div class="q-text">${q.question}</div>
+              <div class="q-text">${formatStatSymbols(q.question)}</div>
             </div>
             <div class="a-row">
               <span class="a-lbl">Answer</span>
-              <span class="a-text">${q.answer}</span>
+              <span class="a-text">${formatStatSymbols(q.answer)}</span>
             </div>
             <div class="sol-block">
               <div class="sol-lbl">Worked Solution</div>
@@ -257,7 +257,7 @@
           <div class="hd-rule"></div>
         </div>`;
 
-      const questionHTML = fj.question
+      const questionHTML = formatStatSymbols(fj.question)
         .replace(/class="fj-part"/g, 'class="fj-part-q"')
         .replace(/class="fj-part-label"/g, 'class="fj-part-label-inline"');
 

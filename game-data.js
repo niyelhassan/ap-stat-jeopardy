@@ -529,3 +529,40 @@ const gameData = {
     value: "Final",
   },
 };
+
+function formatStatSymbols(content = "") {
+  return String(content)
+    .replace(/\bx-bar-([12])\b/g, "x&#772;<sub>$1</sub>")
+    .replace(/\bx-bar_([A-Z])\b/g, "x&#772;<sub>$1</sub>")
+    .replace(/\bx-bar(\d)\b/g, "x&#772;<sub>$1</sub>")
+    .replace(/\bx-bar\b/g, "x&#772;")
+    .replace(/\by-bar\b/g, "y&#772;")
+    .replace(/\by-hat\b/g, "y&#770;")
+    .replace(/\bp-hat\b/g, "p&#770;")
+    .replace(/\bmu_([A-Z])\b/g, "μ<sub>$1</sub>")
+    .replace(/\bmu-([A-Z])\b/g, "μ<sub>$1</sub>")
+    .replace(/\bmu(\d)\b/g, "μ<sub>$1</sub>")
+    .replace(/\bmu\b/g, "μ")
+    .replace(/\bn_([A-Z])\b/g, "n<sub>$1</sub>")
+    .replace(/\bs_([A-Z])\b/g, "s<sub>$1</sub>")
+    .replace(/\bp([A-Z])\b/g, "p<sub>$1</sub>")
+    .replace(/\bsigma\b/g, "σ")
+    .replace(/\balpha\b/g, "α")
+    .replace(/\bbeta\b/g, "β")
+    .replace(/\bp0\b/g, "p<sub>0</sub>")
+    .replace(/\bH0\b/g, "H<sub>0</sub>")
+    .replace(/\bHa\b/g, "H<sub>a</sub>")
+    .replace(/\bsqrt\(([^)]*)\)/g, "√($1)")
+    .replace(/\bgreater than\b/g, "&gt;")
+    .replace(/\bless than\b/g, "&lt;")
+    .replace(/>=/g, "&ge;")
+    .replace(/<=/g, "&le;")
+    .replace(/ < /g, " &lt; ")
+    .replace(/ > /g, " &gt; ")
+    .replace(/\bminus\b/g, "-")
+    .replace(/(\d(?:\.\d+)?) x (?=\d)/g, "$1 &times; ")
+    .replace(/(\d(?:\.\d+)?) x (?=IQR\b)/g, "$1 &times; ")
+    .replace(/\b(P\([AB]\)) x (?=P\([AB]\))/g, "$1 &times; ")
+    .replace(/\b(r) x (?=\()/g, "$1 &times; ")
+    .replace(/\b(row total) x (?=column total)/g, "$1 &times; ");
+}

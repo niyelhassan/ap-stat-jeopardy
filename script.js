@@ -105,7 +105,7 @@ function openQ(cat, i) {
 
   document.getElementById("qCat").textContent = cat;
   document.getElementById("qVal").textContent = `$${q.value}`;
-  document.getElementById("qBody").innerHTML = q.question;
+  document.getElementById("qBody").innerHTML = formatStatSymbols(q.question);
 
   const turn = document.getElementById("qTurn");
   if (state.teams.length > 0) {
@@ -125,7 +125,7 @@ function closeQ() {
 
 // ── Answer modal ───────────────────────────────────────────────────────────
 function showAnswer() {
-  document.getElementById("aBody").textContent = state.current.q.answer;
+  document.getElementById("aBody").innerHTML = formatStatSymbols(state.current.q.answer);
   closeModal("qModal");
   openModal("aModal");
 }
@@ -171,8 +171,8 @@ function renderSteps(el, steps) {
     if (s.type === "formula")
       return `<div class="step-formula">\\[${s.content}\\]</div>`;
     if (s.type === "bullets")
-      return `<ul class="step-bullets">${s.content.map(b => `<li>${b}</li>`).join("")}</ul>`;
-    return `<p class="step-text">${s.content}</p>`;
+      return `<ul class="step-bullets">${s.content.map(b => `<li>${formatStatSymbols(b)}</li>`).join("")}</ul>`;
+    return `<p class="step-text">${formatStatSymbols(s.content)}</p>`;
   }).join("");
   if (window.MathJax) MathJax.typesetPromise([el]);
 }
@@ -181,7 +181,7 @@ function renderSteps(el, steps) {
 function openFJ() {
   const fj = gameData.finalJeopardy;
   document.getElementById("fjCat").textContent = fj.category;
-  document.getElementById("fjBody").innerHTML = fj.question;
+  document.getElementById("fjBody").innerHTML = formatStatSymbols(fj.question);
   openModal("fjModal");
 }
 
@@ -203,8 +203,8 @@ function closeFJSol() { closeModal("fjsModal"); }
 function stepsHTML(steps) {
   return steps.map(s => {
     if (s.type === "formula") return `<div class="step-formula">\\[${s.content}\\]</div>`;
-    if (s.type === "bullets") return `<ul class="step-bullets">${s.content.map(b => `<li>${b}</li>`).join("")}</ul>`;
-    return `<p class="step-text">${s.content}</p>`;
+    if (s.type === "bullets") return `<ul class="step-bullets">${s.content.map(b => `<li>${formatStatSymbols(b)}</li>`).join("")}</ul>`;
+    return `<p class="step-text">${formatStatSymbols(s.content)}</p>`;
   }).join("");
 }
 
