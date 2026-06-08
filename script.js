@@ -1,79 +1,121 @@
+const TEAM_COLORS = [
+  '#e11d48', // rose
+  '#0284c7', // sky
+  '#059669', // emerald
+  '#7c3aed', // violet
+  '#ea580c', // orange
+  '#0d9488', // teal
+];
+
 let state = {
   round: 1,
-  teams: [],
-  currentTeam: 0,
+  teams: [
+    { name: "Team 1", score: 0, color: TEAM_COLORS[0] },
+    { name: "Team 2", score: 0, color: TEAM_COLORS[1] },
+    { name: "Team 3", score: 0, color: TEAM_COLORS[2] },
+  ],
+  teamCount: 3,
   used: new Set(),
   current: null,
 };
 
 // ── Boot ───────────────────────────────────────────────────────────────────
-document.getElementById("teamInput").addEventListener("keydown", e => {
-  if (e.key === "Enter") addTeam();
+document.addEventListener("DOMContentLoaded", () => {
+  renderTeamCountPicker();
+  renderTeamNameInputs();
 });
 
 // ── Team setup ─────────────────────────────────────────────────────────────
-function addTeam() {
-  const input = document.getElementById("teamInput");
-  const name = input.value.trim();
-  if (!name || state.teams.length >= 6) return;
-  state.teams.push({ name, score: 0 });
-  input.value = "";
-  renderTeamList();
+function setTeamCount(n) {
+  state.teamCount = n;
+  while (state.teams.length < n) {
+    const i = state.teams.length;
+    state.teams.push({ name: `Team ${i + 1}`, score: 0, color: TEAM_COLORS[i] });
+  }
+  while (state.teams.length > n) state.teams.pop();
+  renderTeamCountPicker();
+  renderTeamNameInputs();
 }
 
-function removeTeam(i) {
-  state.teams.splice(i, 1);
-  renderTeamList();
+function renderTeamCountPicker() {
+  document.getElementById("teamCountRow").innerHTML = [2, 3, 4, 5, 6].map(n => `
+    <button class="count-pill${n === state.teamCount ? " count-pill-active" : ""}" onclick="setTeamCount(${n})">${n}</button>
+  `).join("");
 }
 
-function renderTeamList() {
-  document.getElementById("teamList").innerHTML = state.teams.map((t, i) => `
-    <div class="team-row">
-      <span>${t.name}</span>
-      <button onclick="removeTeam(${i})">✕</button>
-    </div>`).join("");
+function renderTeamNameInputs() {
+  document.getElementById("teamNameList").innerHTML = state.teams.map((t, i) => `
+    <div class="team-name-row">
+      <span class="team-swatch" style="background:${t.color}"></span>
+      <input class="text-input team-name-input" type="text" value="${t.name.replace(/"/g, "&quot;")}"
+             oninput="updateTeamName(${i}, this.value)" maxlength="24" />
+    </div>
+  `).join("");
+}
+
+function updateTeamName(i, val) {
+  state.teams[i].name = val || `Team ${i + 1}`;
 }
 
 // ── Game start ─────────────────────────────────────────────────────────────
 function startGame() {
-  if (state.teams.length === 0) state.teams.push({ name: "Player", score: 0 });
+  document.querySelectorAll(".team-name-input").forEach((input, i) => {
+    state.teams[i].name = input.value.trim() || `Team ${i + 1}`;
+  });
+  state.teams.forEach(t => { t.score = 0; });
+  state.used = new Set();
+  state.round = 1;
+  state.current = null;
+
   document.getElementById("home").classList.add("hidden");
   document.getElementById("board").classList.remove("hidden");
   renderBoard();
 }
 
 function goHome() {
-  state = { round: 1, teams: [], currentTeam: 0, used: new Set(), current: null };
+  const count = state.teamCount;
+  state = { round: 1, teams: [], teamCount: count, used: new Set(), current: null };
+  for (let i = 0; i < count; i++) {
+    state.teams.push({ name: `Team ${i + 1}`, score: 0, color: TEAM_COLORS[i] });
+  }
   document.getElementById("board").classList.add("hidden");
   document.getElementById("home").classList.remove("hidden");
-  document.getElementById("teamList").innerHTML = "";
+  renderTeamCountPicker();
+  renderTeamNameInputs();
 }
 
 // ── Board ──────────────────────────────────────────────────────────────────
 function renderBoard() {
   const rd = gameData[`round${state.round}`];
+  const numCats = rd.categories.length;
+  const numQs = rd.questions[rd.categories[0]].length;
   const grid = document.getElementById("grid");
-  grid.style.gridTemplateColumns = `repeat(${rd.categories.length}, 1fr)`;
+  grid.style.gridTemplateColumns = `repeat(${numCats}, 1fr)`;
+  grid.style.gridTemplateRows = `auto repeat(${numQs}, 1fr)`;
   grid.innerHTML = "";
 
+  // Row 0: all headers in the same grid row → equal height automatically
   rd.categories.forEach(cat => {
-    const col = document.createElement("div");
-    col.className = "board-col";
-    col.innerHTML = `<div class="cat-header">${cat}</div>`;
+    const header = document.createElement("div");
+    header.className = "cat-header";
+    header.textContent = cat;
+    grid.appendChild(header);
+  });
 
-    rd.questions[cat].forEach((q, i) => {
-      const id = `${state.round}-${cat}-${i}`;
+  // Rows 1–N: question cards row by row
+  for (let qi = 0; qi < numQs; qi++) {
+    rd.categories.forEach(cat => {
+      const q = rd.questions[cat][qi];
+      const id = `${state.round}-${cat}-${qi}`;
       const used = state.used.has(id);
       const card = document.createElement("button");
       card.className = "q-card" + (used ? " used" : "");
       card.disabled = used;
       card.innerHTML = used ? "" : `<span class="q-dollar">$${q.value}</span>`;
-      if (!used) card.onclick = () => openQ(cat, i);
-      col.appendChild(card);
+      if (!used) card.onclick = () => openQ(cat, qi);
+      grid.appendChild(card);
     });
-
-    grid.appendChild(col);
-  });
+  }
 
   renderScoreBar();
   document.getElementById("tab1").classList.toggle("active", state.round === 1);
@@ -85,21 +127,20 @@ function switchRound(n) {
   renderBoard();
 }
 
-function renderScoreBar() {
-  document.getElementById("scoreBar").innerHTML = state.teams.map((t, i) => `
-    <div class="score-control">
-      <button class="score-adjust score-minus" onclick="adjustScore(${i}, -100)" aria-label="Subtract 100 points from ${t.name}">−</button>
-      <button class="score-chip ${i === state.currentTeam ? "chip-active" : ""}" onclick="selectTeam(${i})">
-        <span class="chip-name">${t.name}</span>
-        <span class="chip-score">$${t.score}</span>
-      </button>
-      <button class="score-adjust score-plus" onclick="adjustScore(${i}, 100)" aria-label="Add 100 points to ${t.name}">+</button>
-    </div>`).join("");
+function fmtScore(n) {
+  return n < 0 ? `-$${Math.abs(n)}` : `$${n}`;
 }
 
-function selectTeam(i) {
-  state.currentTeam = i;
-  renderScoreBar();
+function renderScoreBar() {
+  document.getElementById("scoreBar").innerHTML = state.teams.map((t, i) => `
+    <div class="score-team" style="background:${t.color}">
+      <button class="score-adj" onclick="adjustScore(${i}, -100)" aria-label="−100">−</button>
+      <div class="score-info">
+        <span class="score-name">${t.name}</span>
+        <span class="score-val">${fmtScore(t.score)}</span>
+      </div>
+      <button class="score-adj" onclick="adjustScore(${i}, 100)" aria-label="+100">+</button>
+    </div>`).join("");
 }
 
 function adjustScore(i, amount) {
@@ -116,14 +157,6 @@ function openQ(cat, i) {
   document.getElementById("qVal").textContent = `$${q.value}`;
   document.getElementById("qBody").innerHTML = formatStatSymbols(q.question);
 
-  const turn = document.getElementById("qTurn");
-  if (state.teams.length > 0) {
-    turn.textContent = `${state.teams[state.currentTeam].name}'s turn`;
-    turn.classList.remove("hidden");
-  } else {
-    turn.classList.add("hidden");
-  }
-
   openModal("qModal");
 }
 
@@ -134,37 +167,58 @@ function closeQ() {
 
 // ── Answer modal ───────────────────────────────────────────────────────────
 function showAnswer() {
+  document.getElementById("aInfo").textContent = `${state.current.cat} · $${state.current.q.value}`;
   document.getElementById("aBody").innerHTML = formatStatSymbols(state.current.q.answer);
+  renderTeamActions();
   closeModal("qModal");
   openModal("aModal");
 }
 
-function markCorrect() {
-  state.teams[state.currentTeam].score += state.current.q.value;
+function renderTeamActions() {
+  const val = state.current.q.value;
+  document.getElementById("aTeamActions").innerHTML = `
+    <div class="team-actions-section team-actions-award">
+      <div class="team-actions-label">Award +$${val} to:</div>
+      <div class="team-btns">
+        ${state.teams.map((t, i) => `
+          <button class="btn-team-action btn-award-team"
+                  style="background:${t.color}"
+                  onclick="awardTo(${i})">${t.name}</button>
+        `).join("")}
+      </div>
+    </div>
+    <div class="team-actions-section team-actions-deduct">
+      <div class="team-actions-label">Wrong answer −$${val}:</div>
+      <div class="team-btns">
+        ${state.teams.map((t, i) => `
+          <button class="btn-team-action btn-deduct-team"
+                  style="border-color:${t.color};color:${t.color}"
+                  onclick="deductFrom(${i})">${t.name}</button>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function awardTo(i) {
+  state.teams[i].score += state.current.q.value;
   finalize();
 }
 
-function markWrong() {
-  state.teams[state.currentTeam].score -= state.current.q.value;
-  nextTeam();
-  closeModal("aModal");
-  openModal("qModal");
+function deductFrom(i) {
+  state.teams[i].score -= state.current.q.value;
+  renderScoreBar();
+  renderTeamActions();
 }
 
 function skipQ() { finalize(); }
 
 function finalize() {
   state.used.add(`${state.round}-${state.current.cat}-${state.current.i}`);
-  nextTeam();
   closeModal("aModal");
   closeModal("sModal");
   state.current = null;
   renderBoard();
-}
-
-function nextTeam() {
-  if (state.teams.length > 1)
-    state.currentTeam = (state.currentTeam + 1) % state.teams.length;
 }
 
 // ── Solution modal ─────────────────────────────────────────────────────────
