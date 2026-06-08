@@ -87,14 +87,23 @@ function switchRound(n) {
 
 function renderScoreBar() {
   document.getElementById("scoreBar").innerHTML = state.teams.map((t, i) => `
-    <button class="score-chip ${i === state.currentTeam ? "chip-active" : ""}" onclick="selectTeam(${i})">
-      <span class="chip-name">${t.name}</span>
-      <span class="chip-score">$${t.score}</span>
-    </button>`).join("");
+    <div class="score-control">
+      <button class="score-adjust score-minus" onclick="adjustScore(${i}, -100)" aria-label="Subtract 100 points from ${t.name}">−</button>
+      <button class="score-chip ${i === state.currentTeam ? "chip-active" : ""}" onclick="selectTeam(${i})">
+        <span class="chip-name">${t.name}</span>
+        <span class="chip-score">$${t.score}</span>
+      </button>
+      <button class="score-adjust score-plus" onclick="adjustScore(${i}, 100)" aria-label="Add 100 points to ${t.name}">+</button>
+    </div>`).join("");
 }
 
 function selectTeam(i) {
   state.currentTeam = i;
+  renderScoreBar();
+}
+
+function adjustScore(i, amount) {
+  state.teams[i].score += amount;
   renderScoreBar();
 }
 

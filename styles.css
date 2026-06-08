@@ -320,13 +320,17 @@ button {
   flex-wrap: wrap;
   align-items: center;
 }
+.score-control {
+  display: flex;
+}
 .score-chip {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0.35rem 0.875rem;
-  border-radius: 0.375rem;
+  border-radius: 0;
   border: 1px solid var(--border);
+  border-left: 0;
   background: var(--white);
   cursor: pointer;
   transition: background 0.15s;
@@ -347,6 +351,27 @@ button {
 .chip-score {
   font-size: 1.05rem;
   font-weight: 900;
+  color: var(--blue);
+}
+.score-adjust {
+  min-width: 1.7rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.score-minus {
+  border-radius: 0.375rem 0 0 0.375rem;
+}
+.score-plus {
+  border-left: 0;
+  border-radius: 0 0.375rem 0.375rem 0;
+}
+.score-adjust:hover {
+  background: var(--blue-lt);
   color: var(--blue);
 }
 
