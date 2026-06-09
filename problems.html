@@ -6,13 +6,6 @@
   <title>AP Statistics: All Questions &amp; Answers</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
-  <script>
-    MathJax = {
-      tex: { inlineMath: [["$","$"],["\\(","\\)"]], displayMath: [["$$","$$"],["\\[","\\]"]], processEscapes: true },
-      options: { enableMenu: false },
-    };
-  </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
     :root {
       --blue:    #1e3a8a;
@@ -293,8 +286,6 @@
     if (!printRound || printRound === "1") main.appendChild(buildRound("round1", "Round 1", "r1"));
     if (!printRound || printRound === "2") main.appendChild(buildRound("round2", "Double Jeopardy", "r2"));
     if (!printRound) main.appendChild(buildFJ());
-
-    if (window.MathJax) MathJax.typesetPromise([main]);
   </script>
 </body>
 </html>

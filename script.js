@@ -155,7 +155,7 @@ function openQ(cat, i) {
 
   document.getElementById("qCat").textContent = cat;
   document.getElementById("qVal").textContent = `$${q.value}`;
-  document.getElementById("qBody").innerHTML = formatStatSymbols(q.question);
+  document.getElementById("qBody").innerHTML = `<div class="q-text">${formatStatSymbols(q.question)}</div>`;
 
   openModal("qModal");
 }
@@ -168,7 +168,7 @@ function closeQ() {
 // ── Answer modal ───────────────────────────────────────────────────────────
 function showAnswer() {
   document.getElementById("aInfo").textContent = `${state.current.cat} · $${state.current.q.value}`;
-  document.getElementById("aBody").innerHTML = formatStatSymbols(state.current.q.answer);
+  document.getElementById("aBody").innerHTML = `<div class="a-text">${formatStatSymbols(state.current.q.answer)}</div>`;
   renderTeamActions();
   closeModal("qModal");
   openModal("aModal");
@@ -237,7 +237,6 @@ function renderSteps(el, steps) {
       return `<ul class="step-bullets">${s.content.map(b => `<li>${formatStatSymbols(b)}</li>`).join("")}</ul>`;
     return `<p class="step-text">${formatStatSymbols(s.content)}</p>`;
   }).join("");
-  if (window.MathJax) MathJax.typesetPromise([el]);
 }
 
 // ── Final Jeopardy ─────────────────────────────────────────────────────────
@@ -257,7 +256,6 @@ function showFJSol() {
       <div class="sol-part-label">${part.label}</div>
       <div class="sol-part-steps">${stepsHTML(part.steps)}</div>
     </div>`).join("");
-  if (window.MathJax) MathJax.typesetPromise([el]);
   openModal("fjsModal");
 }
 
@@ -277,7 +275,6 @@ function openModal(id) {
   el.classList.remove("hidden");
   requestAnimationFrame(() => {
     el.classList.add("modal-visible");
-    if (window.MathJax) MathJax.typeset();
   });
 }
 

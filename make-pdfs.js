@@ -50,7 +50,7 @@ async function printToPDF(pageUrl, outputPath) {
   ], { stdio: "ignore" });
 
   try {
-    // Wait for page + MathJax to fully render
+    // Wait for the page (fonts + rendering) to fully settle
     await sleep(4000);
 
     const targets = await getJSON(`http://localhost:${port}/json/list`);

@@ -466,6 +466,10 @@ button {
   align-items: center;
   justify-content: center;
 }
+.q-body > .q-text,
+.a-body > .a-text {
+  max-width: 100%;
+}
 
 /* ── Answer modal ─────────────────────────────────────────────── */
 .a-header {
